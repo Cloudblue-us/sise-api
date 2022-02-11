@@ -12,6 +12,9 @@ includes:
   - introduction
   - authentication
   - policies
+  - insured
+  - coverages
+  - causes
   - errors
 
 search: true

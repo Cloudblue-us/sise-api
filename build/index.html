@@ -336,10 +336,46 @@
                     <a href="#response-object" class="toc-h2 toc-link" data-title="Response Object">Response Object</a>
                   </li>
                   <li>
-                    <a href="#get-policy" class="toc-h2 toc-link" data-title="Get Policy">Get Policy</a>
+                    <a href="#get-policy-number" class="toc-h2 toc-link" data-title="Get Policy Number">Get Policy Number</a>
                   </li>
                   <li>
                     <a href="#insert-policy" class="toc-h2 toc-link" data-title="Insert Policy">Insert Policy</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#insured" class="toc-h1 toc-link" data-title="Insured">Insured</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#response-object" class="toc-h2 toc-link" data-title="Response Object">Response Object</a>
+                  </li>
+                  <li>
+                    <a href="#get-insured" class="toc-h2 toc-link" data-title="Get Insured">Get Insured</a>
+                  </li>
+                  <li>
+                    <a href="#insert-insured" class="toc-h2 toc-link" data-title="Insert Insured">Insert Insured</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#coverages" class="toc-h1 toc-link" data-title="Coverages">Coverages</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#response-object" class="toc-h2 toc-link" data-title="Response Object">Response Object</a>
+                  </li>
+                  <li>
+                    <a href="#get-coverages" class="toc-h2 toc-link" data-title="Get Coverages">Get Coverages</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#causes" class="toc-h1 toc-link" data-title="Causes">Causes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#response-object" class="toc-h2 toc-link" data-title="Response Object">Response Object</a>
+                  </li>
+                  <li>
+                    <a href="#get-causes" class="toc-h2 toc-link" data-title="Get Causes">Get Causes</a>
                   </li>
               </ul>
           </li>
@@ -378,7 +414,7 @@ You must replace <code>access_token</code> with your personal API key.
     </span><span class="nl">"refresh_token"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bb240d997e3f47ab9cb89b6e726af0f6"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"as:client_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ngAuthApp"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"userName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SISTRANDO"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">".refresh"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+    </span><span class="nl">".refresh"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">".issued"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 19 Mar 2015 04:57:42 GMT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">".expires"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Thu, 19 Mar 2015 05:07:42 GMT"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -514,13 +550,13 @@ You must replace <code>access_token</code> with your personal API key.
 </tr>
 </tbody></table>
 <h1 id='policies'>Policies</h1>
-<p>Methods about policies</p>
+<p>Policies Methods</p>
 <h2 id='response-object'>Response Object</h2>
 <blockquote>
 <p>Example JSON API response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"procesadoExitoso"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"procesadoExitoso"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mensaje"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"codigoSise"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -550,7 +586,389 @@ You must replace <code>access_token</code> with your personal API key.
 <td>ID issued by SISE</td>
 </tr>
 </tbody></table>
-<h2 id='get-policy'>Get Policy</h2><h2 id='insert-policy'>Insert Policy</h2><h1 id='errors'>Errors</h1>
+<h2 id='get-policy-number'>Get Policy Number</h2>
+<blockquote>
+<p>Request data example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_suc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nro_pol"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get policy number and availability.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /api/poliza/ConsultarNroPoliza</code></p>
+<h3 id='content-type'>Content-type</h3>
+<p><code>application/json</code></p>
+<h3 id='body-data'>body data</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cod_ramo</td>
+<td>int</td>
+<td>True</td>
+<td>Branch code</td>
+</tr>
+<tr>
+<td>cod_suc</td>
+<td>int</td>
+<td>True</td>
+<td>Branch Office code</td>
+</tr>
+<tr>
+<td>nro_pol</td>
+<td>long</td>
+<td>True</td>
+<td>Policy number</td>
+</tr>
+</tbody></table>
+<h2 id='insert-policy'>Insert Policy</h2>
+<blockquote>
+<p>Insert JSON body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"cod_usuario"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12341234A"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_suc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nro_pol"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nro_endoso"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"certificado_sise"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fec_vig_desde"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AAAA-MM-DD 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fec_vig_hasta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AAAA-MM-DD 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fec_emision"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AAAA-MM-DD 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_agente"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_tipo_agente"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_aseg"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_moneda"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_imp_cambio"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_grupo_endo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imp_prima"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pje_iva"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imp_iva"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">19000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imp_decreto"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imp_descuento"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imp_gasto_emision"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imp_recargo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imp_base_disponible"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_pto_vta"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_tipo_poliza"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_giro_negocio"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sn_pagador"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referencia_pago"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"convenio_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fechaDesembolso"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAAA-MM-DD 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fechaSolicitud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAAA-MM-DD 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"detalleCoberturas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cod_sub_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cod_tarifa"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_prima"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_iva"</span><span class="p">:</span><span class="w"> </span><span class="mi">80000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_suma_asegurada"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_resp_max"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sn_suma_total_suma_aseg"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cod_estado"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"detalleIntermediario"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"cod_agente"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cod_tipo_agente"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pje_partic"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pje_comis_normal"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pje_comis_extra"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_comis_normal_me"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_comis_extra_me"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"InfomacionTomador"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"detallePagador"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"cod_aseg"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sn_pagador"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sn_asegurado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"referencia_pago"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_prima"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pje_iva"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_iva"</span><span class="p">:</span><span class="w"> </span><span class="mi">19000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_decreto"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_descuento"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_gasto_emision"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_recargo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"infomacionAsegurado"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="nl">"detalleBeneficiarios"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carlos"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"apellido1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Perez"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"apellido2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rodriguez"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"parentesco"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"porcentajeValorAsegurado"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"fec_vig_desde"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AAAA-MM-DD 00:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fec_vig_hasta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AAAA-MM-DD 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"tipo_coaseguro"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"detalleCoaseguro"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"nro_doc_cia"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pje_part"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pje_gastos_admon"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imp_coaseguro"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"detalleInformacionPago"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"for_pago"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"franquicia"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"num_tarjeta"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"num_autoriza"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"valor_pago"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fec_pago"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAAA-MM-DD 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cod_banco"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nro_consignacion"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txt_nom_banco"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id_proc_sync"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"agrupar_recaudo"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Insert new policy.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>PUT /api/poliza</code></p>
+<h3 id='content-type-2'>Content-type</h3>
+<p><code>application/json</code></p>
+<h3 id='body-data-2'>body data</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Vlocity field</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cod_ramo</td>
+<td>int</td>
+<td>True</td>
+<td>Branch code</td>
+<td></td>
+</tr>
+<tr>
+<td>cod_suc</td>
+<td>int</td>
+<td>True</td>
+<td>Branch Office code</td>
+<td></td>
+</tr>
+<tr>
+<td>nro_pol</td>
+<td>long</td>
+<td>True</td>
+<td>Policy number</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='insured'>Insured</h1>
+<p>Methods about policies</p>
+<h2 id='response-object'>Response Object</h2>
+<blockquote>
+<p>Example JSON API response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">""</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Methods return a JSON encoded object</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Get Policy response</th>
+<th>Insert Policy response</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h2 id='get-insured'>Get Insured</h2>
+<blockquote>
+<p>Request data example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_suc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nro_pol"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Request token method.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /api/asegurado/?cod_tipo_doc=&lt;cod_tipo_doc&gt;&amp;nro_doc=&lt;nro_doc&gt;</code></p>
+<h3 id='content-type'>Content-type</h3>
+<p><code>application/json</code></p>
+<h3 id='body-data'>body data</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cod_ramo</td>
+<td>int</td>
+<td>True</td>
+<td>Branch code</td>
+</tr>
+<tr>
+<td>cod_suc</td>
+<td>int</td>
+<td>True</td>
+<td>Branch Office code</td>
+</tr>
+<tr>
+<td>nro_pol</td>
+<td>long</td>
+<td>True</td>
+<td>Policy number</td>
+</tr>
+</tbody></table>
+<h2 id='insert-insured'>Insert Insured</h2><h1 id='coverages'>Coverages</h1>
+<p>Methods about policies</p>
+<h2 id='response-object'>Response Object</h2>
+<blockquote>
+<p>Example JSON API response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">""</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Methods return a JSON encoded object</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Get Policy response</th>
+<th>Insert Policy response</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h2 id='get-coverages'>Get Coverages</h2>
+<blockquote>
+<p>Request data example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_suc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nro_pol"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Request token method.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /api/asegurado/?cod_tipo_doc=&lt;cod_tipo_doc&gt;&amp;nro_doc=&lt;nro_doc&gt;</code></p>
+<h3 id='content-type'>Content-type</h3>
+<p><code>application/json</code></p>
+<h3 id='body-data'>body data</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cod_ramo</td>
+<td>int</td>
+<td>True</td>
+<td>Branch code</td>
+</tr>
+<tr>
+<td>cod_suc</td>
+<td>int</td>
+<td>True</td>
+<td>Branch Office code</td>
+</tr>
+<tr>
+<td>nro_pol</td>
+<td>long</td>
+<td>True</td>
+<td>Policy number</td>
+</tr>
+</tbody></table>
+<h1 id='causes'>Causes</h1>
+<p>Methods about causes</p>
+<h2 id='response-object'>Response Object</h2>
+<blockquote>
+<p>Example JSON API response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">""</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Methods return a JSON encoded object</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Get Policy response</th>
+<th>Insert Policy response</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h2 id='get-causes'>Get Causes</h2>
+<blockquote>
+<p>Request data example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_suc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nro_pol"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Request token method.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /api/asegurado/?cod_tipo_doc=&lt;cod_tipo_doc&gt;&amp;nro_doc=&lt;nro_doc&gt;</code></p>
+<h3 id='content-type'>Content-type</h3>
+<p><code>application/json</code></p>
+<h3 id='body-data'>body data</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cod_ramo</td>
+<td>int</td>
+<td>true</td>
+<td>Branch code</td>
+</tr>
+<tr>
+<td>cod_suc</td>
+<td>int</td>
+<td>true</td>
+<td>Branch Office code</td>
+</tr>
+<tr>
+<td>nro_pol</td>
+<td>long</td>
+<td>true</td>
+<td>Policy number</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
 <p>The following error codes are used:</p>
 
 <table><thead>

@@ -22,7 +22,7 @@ You must replace <code>access_token</code> with your personal API key.
     "refresh_token" : "bb240d997e3f47ab9cb89b6e726af0f6",
     "as:client_id" : "ngAuthApp",
     "userName" : "SISTRANDO",
-    ".refresh" : True,
+    ".refresh" : true,
     ".issued" : "Thu, 19 Mar 2015 04:57:42 GMT",
     ".expires" :"Thu, 19 Mar 2015 05:07:42 GMT"
 }
