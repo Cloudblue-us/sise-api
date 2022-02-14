@@ -333,7 +333,7 @@
             <a href="#policies" class="toc-h1 toc-link" data-title="Policies">Policies</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#response-object" class="toc-h2 toc-link" data-title="Response Object">Response Object</a>
+                    <a href="#policies-response-object" class="toc-h2 toc-link" data-title="Policies Response Object">Policies Response Object</a>
                   </li>
                   <li>
                     <a href="#get-policy-number" class="toc-h2 toc-link" data-title="Get Policy Number">Get Policy Number</a>
@@ -551,7 +551,7 @@ You must replace <code>access_token</code> with your personal API key.
 </tbody></table>
 <h1 id='policies'>Policies</h1>
 <p>Policies Methods</p>
-<h2 id='response-object'>Response Object</h2>
+<h2 id='policies-response-object'>Policies Response Object</h2>
 <blockquote>
 <p>Example JSON API response</p>
 </blockquote>
@@ -601,7 +601,7 @@ You must replace <code>access_token</code> with your personal API key.
 <p><code>POST /api/poliza/ConsultarNroPoliza</code></p>
 <h3 id='content-type'>Content-type</h3>
 <p><code>application/json</code></p>
-<h3 id='body-data'>body data</h3>
+<h3 id='body-data'>Body data</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -629,6 +629,8 @@ You must replace <code>access_token</code> with your personal API key.
 <td>Policy number</td>
 </tr>
 </tbody></table>
+<h3 id='response'>Response</h3>
+<p><a href="#policies-response-object">Policies Response Object</a></p>
 <h2 id='insert-policy'>Insert Policy</h2>
 <blockquote>
 <p>Insert JSON body</p>
@@ -754,31 +756,257 @@ You must replace <code>access_token</code> with your personal API key.
 <th>Type</th>
 <th>Required</th>
 <th>Description</th>
-<th>Vlocity field</th>
+<th>Vlocity mapping</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>cod_usuario</td>
+<td>string</td>
+<td>True</td>
+<td>User assigned by mundial</td>
+<td></td>
+</tr>
 <tr>
 <td>cod_ramo</td>
 <td>int</td>
 <td>True</td>
 <td>Branch code</td>
-<td></td>
+<td><code>Default value: 25</code></td>
 </tr>
 <tr>
 <td>cod_suc</td>
 <td>int</td>
 <td>True</td>
 <td>Branch Office code</td>
-<td></td>
+<td><code>Account:Cod_Suc</code></td>
 </tr>
 <tr>
 <td>nro_pol</td>
 <td>long</td>
 <td>True</td>
 <td>Policy number</td>
+<td>``</td>
+</tr>
+<tr>
+<td>nro_endoso</td>
+<td>int</td>
+<td>True</td>
+<td>Endorsement number</td>
+<td>``</td>
+</tr>
+<tr>
+<td>certificado_sise</td>
+<td>long</td>
+<td>False</td>
+<td>Autoincrementing number starting in 0. Must be saved in Vlocity</td>
+<td>``</td>
+</tr>
+<tr>
+<td>fec_vig_desde</td>
+<td>datetime</td>
+<td>true</td>
+<td>Policy starting date</td>
+<td><code>Asset:vlocity_ins__EffectiveDate__c</code> starting date hours begin on 00:00:00</td>
+</tr>
+<tr>
+<td>fec_vig_hasta</td>
+<td>datetime</td>
+<td>true</td>
+<td>Policy ending date</td>
+<td><code>Asset:vlocity_ins__EffectiveDate__c</code> endign date hours end on 23:59:59</td>
+</tr>
+<tr>
+<td>fec_emision</td>
+<td>datetime</td>
+<td>true</td>
+<td>Issuing date</td>
+<td><code>Asset:vlocity_ins__InceptionDate__c</code></td>
+</tr>
+<tr>
+<td>cod_agente</td>
+<td>long</td>
+<td>true</td>
+<td>Broker code</td>
+<td><code>Account:cod_agente__c</code></td>
+</tr>
+<tr>
+<td>cod_tipo_agente</td>
+<td>int</td>
+<td>true</td>
+<td>Broker type code</td>
+<td><code>Account:cod_agente__c</code></td>
+</tr>
+<tr>
+<td>cod_aseg</td>
+<td>long</td>
+<td>false</td>
+<td>Taker code</td>
+<td></td>
+</tr>
+<tr>
+<td>cod_moneda</td>
+<td>int</td>
+<td>true</td>
+<td>issue currency code</td>
+<td><code>Default value: 0</code></td>
+</tr>
+<tr>
+<td>cod_imp_cambio</td>
+<td>double</td>
+<td>true</td>
+<td>foreign currency issuing code</td>
+<td><code>Default value: 1</code></td>
+</tr>
+<tr>
+<td>cod_grupo_endo</td>
+<td>int</td>
+<td>true</td>
+<td>Movement type</td>
+<td>Matrix in the IP</td>
+</tr>
+<tr>
+<td>imp_prima</td>
+<td>double</td>
+<td>true</td>
+<td>Premium amount</td>
+<td><code>Asset:vlocity_ins__TotalPremiumForTerm__c</code></td>
+</tr>
+<tr>
+<td>pje_iva</td>
+<td>double</td>
+<td>false</td>
+<td>VAT percentage</td>
+<td><code>Tax and Fee:vlocity_ins__Percent__c</code></td>
+</tr>
+<tr>
+<td>imp_iva</td>
+<td>double</td>
+<td>false</td>
+<td>VAT amount</td>
+<td><code>Asset:vlocity_ins__TotalFeeAmount__c</code></td>
+</tr>
+<tr>
+<td>imp_decreto</td>
+<td>double</td>
+<td>false</td>
+<td>Decree amount</td>
+<td><code>Default value: 0</code></td>
+</tr>
+<tr>
+<td>imp_descuento</td>
+<td>double</td>
+<td>false</td>
+<td>Discount amount</td>
+<td><code>Default value: 0</code></td>
+</tr>
+<tr>
+<td>imp_gasto_emision</td>
+<td>double</td>
+<td>false</td>
+<td>emission expenses</td>
+<td><code>Default value: 0</code></td>
+</tr>
+<tr>
+<td>imp_recargo</td>
+<td>double</td>
+<td>false</td>
+<td>surcharge amount</td>
+<td><code>Default value: 0</code></td>
+</tr>
+<tr>
+<td>imp_base_disponible</td>
+<td>double</td>
+<td>true</td>
+<td>base premium, value used for VAT calculation</td>
+<td><code>Asset:vlocity_ins__StandardPremium__c</code></td>
+</tr>
+<tr>
+<td>cod_pto_vta</td>
+<td>long</td>
+<td>false</td>
+<td>Point of sale code</td>
+<td><code>Asset:vlocity_ins__StandardPremium__c</code></td>
+</tr>
+<tr>
+<td>cod_tipo_poliza</td>
+<td>long</td>
+<td>true</td>
+<td>Policy type code</td>
+<td>Matrix in the IP</td>
+</tr>
+<tr>
+<td>cod_giro_negocio</td>
+<td>int</td>
+<td>false</td>
+<td>Identifies whether the policy is collective or individual</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td>sn_pagador</td>
+<td>bool</td>
+<td>true</td>
+<td>Policy type code</td>
+<td>If the policyholder is the same payer, send true.</td>
+</tr>
+<tr>
+<td>referencia_pago</td>
+<td>string</td>
+<td>true</td>
+<td>Payment reference. Must be filled if <code>sn_pagador</code> is true</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td>convenio_id</td>
+<td>int</td>
+<td>false</td>
+<td>SISE Agreement code</td>
+<td><code>default: &#39;&#39;</code></td>
+</tr>
+<tr>
+<td>plan_id</td>
+<td>int</td>
+<td>false</td>
+<td>SISE plan code</td>
+<td><code>default: &#39;&#39;</code></td>
+</tr>
+<tr>
+<td>fechaDesembolso</td>
+<td>datetime</td>
+<td>false</td>
+<td>Payout date</td>
+<td><code>default: &#39;&#39;</code></td>
+</tr>
+<tr>
+<td>fechaSolicitud</td>
+<td>datetime</td>
+<td>false</td>
+<td>Application date</td>
+<td><code>default: &#39;&#39;</code></td>
+</tr>
+<tr>
+<td>detalleCoberturas</td>
+<td>Array of <a href="#"></a></td>
+<td>false</td>
+<td>List of coverage associated with the policy movement</td>
+<td></td>
+</tr>
+<tr>
+<td>detalleIntermediario</td>
+<td>Array of <a href="#"></a></td>
+<td>true</td>
+<td>List of brokers associated with the policy movement</td>
+<td></td>
+</tr>
+<tr>
+<td>InfomacionTomador</td>
+<td><a href="#"></a></td>
+<td>false</td>
+<td>Taker information</td>
 <td></td>
 </tr>
 </tbody></table>
+<h3 id='response-2'>Response</h3>
+<p><a href="#policies-response-object">Policies Response Object</a></p>
 <h1 id='insured'>Insured</h1>
 <p>Methods about policies</p>
 <h2 id='response-object'>Response Object</h2>
