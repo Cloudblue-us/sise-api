@@ -347,7 +347,13 @@
             <a href="#insured" class="toc-h1 toc-link" data-title="Insured">Insured</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#response-object" class="toc-h2 toc-link" data-title="Response Object">Response Object</a>
+                    <a href="#insured-party-object" class="toc-h2 toc-link" data-title="Insured Party Object">Insured Party Object</a>
+                  </li>
+                  <li>
+                    <a href="#insured-addresses" class="toc-h2 toc-link" data-title="Insured Addresses">Insured Addresses</a>
+                  </li>
+                  <li>
+                    <a href="#insured-telephone" class="toc-h2 toc-link" data-title="Insured Telephone">Insured Telephone</a>
                   </li>
                   <li>
                     <a href="#get-insured" class="toc-h2 toc-link" data-title="Get Insured">Get Insured</a>
@@ -361,9 +367,6 @@
             <a href="#coverages" class="toc-h1 toc-link" data-title="Coverages">Coverages</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#response-object" class="toc-h2 toc-link" data-title="Response Object">Response Object</a>
-                  </li>
-                  <li>
                     <a href="#get-coverages" class="toc-h2 toc-link" data-title="Get Coverages">Get Coverages</a>
                   </li>
               </ul>
@@ -372,10 +375,27 @@
             <a href="#causes" class="toc-h1 toc-link" data-title="Causes">Causes</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#response-object" class="toc-h2 toc-link" data-title="Response Object">Response Object</a>
+                    <a href="#get-causes" class="toc-h2 toc-link" data-title="Get Causes">Get Causes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#datasets" class="toc-h1 toc-link" data-title="Datasets">Datasets</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#document-types" class="toc-h2 toc-link" data-title="Document types">Document types</a>
                   </li>
                   <li>
-                    <a href="#get-causes" class="toc-h2 toc-link" data-title="Get Causes">Get Causes</a>
+                    <a href="#gender-types" class="toc-h2 toc-link" data-title="Gender types">Gender types</a>
+                  </li>
+                  <li>
+                    <a href="#marital-status-code" class="toc-h2 toc-link" data-title="Marital Status Code">Marital Status Code</a>
+                  </li>
+                  <li>
+                    <a href="#address-types" class="toc-h2 toc-link" data-title="Address Types">Address Types</a>
+                  </li>
+                  <li>
+                    <a href="#telephone-types" class="toc-h2 toc-link" data-title="Telephone Types">Telephone Types</a>
                   </li>
               </ul>
           </li>
@@ -586,6 +606,14 @@ You must replace <code>access_token</code> with your personal API key.
 <td>ID issued by SISE</td>
 </tr>
 </tbody></table>
+
+<p>stateDiagram-v2
+    [<em>] --&gt; Still
+    Still --&gt; [</em>]
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]</p>
 <h2 id='get-policy-number'>Get Policy Number</h2>
 <blockquote>
 <p>Request data example</p>
@@ -1008,13 +1036,46 @@ You must replace <code>access_token</code> with your personal API key.
 <h3 id='response-2'>Response</h3>
 <p><a href="#policies-response-object">Policies Response Object</a></p>
 <h1 id='insured'>Insured</h1>
-<p>Methods about policies</p>
-<h2 id='response-object'>Response Object</h2>
+<p>Methods related the insured party</p>
+<h2 id='insured-party-object'>Insured Party Object</h2>
 <blockquote>
-<p>Example JSON API response</p>
+<p>Example Insured JSON</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">""</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="nl">"cod_usuario"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_aseg"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apellido1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LastName 1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apellido2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LastName 2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tipo_doc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nro_doc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"digito_verificacion"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fec_nacimiento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAAA-MM-DD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_pais_nacionalidad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cuidad_nacimiento"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sexo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_est_civil"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_tipo_agente"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"deportes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"empresa"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ocupacionActual"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_tipo_iva"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"direcciones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"cod_tipo_dir"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cod_pais"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cod_dpto"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cod_municipio"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txt_direccion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cll 1 1 1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sn_direccion_correo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"telefonos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"cod_tipo_telef"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txt_telefono"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Methods return a JSON encoded object</p>
@@ -1022,178 +1083,635 @@ You must replace <code>access_token</code> with your personal API key.
 <table><thead>
 <tr>
 <th>Attribute</th>
-<th>Get Policy response</th>
-<th>Insert Policy response</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Vlocity mapping</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>cod_usuario</td>
+<td>string</td>
+<td>false</td>
+<td>User ID assigned by Mundial</td>
+<td></td>
+</tr>
+<tr>
+<td>cod_aseg</td>
+<td>long</td>
+<td>false</td>
+<td>Insured ID in SISE</td>
+<td><code>Default: 0</code></td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>false</td>
+<td>First and middle name of the insured</td>
+<td></td>
+</tr>
+<tr>
+<td>apellido1</td>
+<td>string</td>
+<td>false</td>
+<td>Last name 1</td>
+<td></td>
+</tr>
+<tr>
+<td>apellido2</td>
+<td>string</td>
+<td>false</td>
+<td>Last name 2</td>
+<td></td>
+</tr>
+<tr>
+<td>tipo_doc</td>
+<td>int</td>
+<td>false</td>
+<td>Document type ID</td>
+<td><a href="#document-types">Document Types</a></td>
+</tr>
+<tr>
+<td>nro_doc</td>
+<td>string</td>
+<td>false</td>
+<td>Document number</td>
+<td></td>
+</tr>
+<tr>
+<td>digito_verificacion</td>
+<td>int</td>
+<td>false</td>
+<td>Verification number if tipo_doc is NIT</td>
+<td></td>
+</tr>
+<tr>
+<td>fec_nacimiento</td>
+<td>date</td>
+<td>false</td>
+<td>Birthdate</td>
+<td></td>
+</tr>
+<tr>
+<td>cod_pais_nacionalidad</td>
+<td>date</td>
+<td>false</td>
+<td>Birthdate</td>
+<td></td>
+</tr>
+<tr>
+<td>cuidad_nacimiento</td>
+<td>date</td>
+<td>false</td>
+<td>Birthdate</td>
+<td></td>
+</tr>
+<tr>
+<td>sexo</td>
+<td>date</td>
+<td>false</td>
+<td>Gender</td>
+<td><a href="#gender-types">Gender Types</a></td>
+</tr>
+<tr>
+<td>cod_est_civil</td>
+<td>int</td>
+<td>false</td>
+<td>Marital status code</td>
+<td><a href="#marital-status-code">Marital Status Codes</a></td>
+</tr>
+<tr>
+<td>cod_tipo_agente</td>
+<td>int</td>
+<td>false</td>
+<td>Broker type code</td>
+<td></td>
+</tr>
+<tr>
+<td>deportes</td>
+<td>string</td>
+<td>false</td>
+<td>Insured party sports</td>
+<td><code>Default: &quot;&quot;</code></td>
+</tr>
+<tr>
+<td>empresa</td>
+<td>string</td>
+<td>false</td>
+<td>Insured party company</td>
+<td><code>Default: &quot;&quot;</code></td>
+</tr>
+<tr>
+<td>ocupacionActual</td>
+<td>string</td>
+<td>false</td>
+<td>current occupation</td>
+<td><code>Default: &quot;&quot;</code></td>
+</tr>
+<tr>
+<td>cod_tipo_iva</td>
+<td>int</td>
+<td>false</td>
+<td>VAT type ID</td>
+<td></td>
+</tr>
+<tr>
+<td>direcciones</td>
+<td>Array of <a href="#insured-addresses">Insured Addresses</a></td>
+<td>false</td>
+<td>List of Insured addresses</td>
+<td></td>
+</tr>
+<tr>
+<td>telefonos</td>
+<td>Array of <a href="#insured-telephone">Insured Telephone</a></td>
+<td>false</td>
+<td>List of Insured telephones</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='insured-addresses'>Insured Addresses</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Vlocity mapping</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cod_tipo_dir</td>
+<td>int</td>
+<td>true</td>
+<td>Address type ID</td>
+<td><a href="#address-types">Address Types</a> <code>Default: 1</code></td>
+</tr>
+<tr>
+<td>cod_pais</td>
+<td>int</td>
+<td>true</td>
+<td>Country code ID</td>
+<td><code>Default: 1</code></td>
+</tr>
+<tr>
+<td>cod_dpto</td>
+<td>int</td>
+<td>true</td>
+<td>State code ID</td>
+<td><code>Default: 1</code></td>
+</tr>
+<tr>
+<td>cod_municipio</td>
+<td>int</td>
+<td>true</td>
+<td>City code ID</td>
+<td><code>Default: 1</code></td>
+</tr>
+<tr>
+<td>txt_direccion</td>
+<td>int</td>
+<td>true</td>
+<td>Address</td>
+<td></td>
+</tr>
+<tr>
+<td>sn_direccion_correo</td>
+<td>bool</td>
+<td>true</td>
+<td>Is correspondence address</td>
+<td><code>Default: false</code></td>
+</tr>
+</tbody></table>
+<h2 id='insured-telephone'>Insured Telephone</h2>
+<p>Emails can be stored on this field using cod_tipo_telef = 10 or 20</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Vlocity mapping</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cod_tipo_telef</td>
+<td>int</td>
+<td>true</td>
+<td>Telephone type ID</td>
+<td><a href="#telephone-types">Telephone Types</a> <code>Default: 1</code></td>
+</tr>
+<tr>
+<td>txt_telefono</td>
+<td>string</td>
+<td>true</td>
+<td>Telephone or email text</td>
+<td><code>Default: &quot;&quot;</code></td>
+</tr>
 </tbody></table>
 <h2 id='get-insured'>Get Insured</h2>
 <blockquote>
 <p>Request data example</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cod_suc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"nro_pol"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre class="highlight json tab-json"><code></code></pre></div>
 <p>Request token method.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /api/asegurado/?cod_tipo_doc=&lt;cod_tipo_doc&gt;&amp;nro_doc=&lt;nro_doc&gt;</code></p>
 <h3 id='content-type'>Content-type</h3>
 <p><code>application/json</code></p>
-<h3 id='body-data'>body data</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>cod_ramo</td>
-<td>int</td>
-<td>True</td>
-<td>Branch code</td>
-</tr>
-<tr>
-<td>cod_suc</td>
-<td>int</td>
-<td>True</td>
-<td>Branch Office code</td>
-</tr>
-<tr>
-<td>nro_pol</td>
-<td>long</td>
-<td>True</td>
-<td>Policy number</td>
-</tr>
-</tbody></table>
-<h2 id='insert-insured'>Insert Insured</h2><h1 id='coverages'>Coverages</h1>
-<p>Methods about policies</p>
-<h2 id='response-object'>Response Object</h2>
-<blockquote>
-<p>Example JSON API response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">""</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Methods return a JSON encoded object</p>
+<h3 id='response'>Response</h3>
+<p><a href="#insured-party-object">Insured Party Object</a></p>
+<h2 id='insert-insured'>Insert Insured</h2><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST, PUT /api/asegurado</code></p>
+<h3 id='content-type-2'>Content-type</h3>
+<p><code>application/json</code></p>
+<h3 id='body-data'>Body data</h3>
+<p><a href="#insured-party-object">Insured Party Object</a></p>
+<h3 id='response-2'>Response</h3>
+<p>If it&#39;s a new object cod_aseg is returned with the code asigned by SISE</p>
 
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Get Policy response</th>
-<th>Insert Policy response</th>
-</tr>
-</thead><tbody>
-</tbody></table>
+<p><a href="#insured-party-object">Insured Party Object</a></p>
+<h1 id='coverages'>Coverages</h1>
+<p>Consult Coverages of a requested branch</p>
 <h2 id='get-coverages'>Get Coverages</h2>
-<blockquote>
-<p>Request data example</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cod_suc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"nro_pol"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
 <p>Request token method.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /api/asegurado/?cod_tipo_doc=&lt;cod_tipo_doc&gt;&amp;nro_doc=&lt;nro_doc&gt;</code></p>
+<p><code>GET GET /api/comunes/Ramo/&lt;cod_ramo&gt;/Coberturas</code></p>
 <h3 id='content-type'>Content-type</h3>
 <p><code>application/json</code></p>
-<h3 id='body-data'>body data</h3>
+<h3 id='response'>Response</h3>
+<blockquote>
+<p>Example Coverages JSON</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cod_subramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cod_tarifa"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sn_acum_suma_aseg"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sn_rc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sn_habilitado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txt_desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipiscing elit"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
 <th>Type</th>
-<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>cod_ramo</td>
 <td>int</td>
-<td>True</td>
 <td>Branch code</td>
 </tr>
 <tr>
-<td>cod_suc</td>
+<td>cod_subramo</td>
 <td>int</td>
-<td>True</td>
-<td>Branch Office code</td>
+<td>Sub branch code</td>
 </tr>
 <tr>
-<td>nro_pol</td>
-<td>long</td>
-<td>True</td>
-<td>Policy number</td>
+<td>cod_tarifa</td>
+<td>int</td>
+<td>Coverage number</td>
+</tr>
+<tr>
+<td>sn_acum_suma_aseg</td>
+<td>int</td>
+<td>0,-1, if added to the total insured amount</td>
+</tr>
+<tr>
+<td>sn_rc</td>
+<td>string</td>
+<td>0,-1, if it is a RC coverage</td>
+</tr>
+<tr>
+<td>sn_habilitado</td>
+<td>string</td>
+<td>0,-1, if coverage is enabled</td>
+</tr>
+<tr>
+<td>txt_desc</td>
+<td>string</td>
+<td>Description</td>
 </tr>
 </tbody></table>
 <h1 id='causes'>Causes</h1>
 <p>Methods about causes</p>
-<h2 id='response-object'>Response Object</h2>
-<blockquote>
-<p>Example JSON API response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">""</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Methods return a JSON encoded object</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Get Policy response</th>
-<th>Insert Policy response</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h2 id='get-causes'>Get Causes</h2>
-<blockquote>
-<p>Request data example</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cod_suc"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"nro_pol"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Request token method.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /api/asegurado/?cod_tipo_doc=&lt;cod_tipo_doc&gt;&amp;nro_doc=&lt;nro_doc&gt;</code></p>
+<h2 id='get-causes'>Get Causes</h2><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET api/Siniestro/Causas/&lt;cod_ramo&gt;</code></p>
 <h3 id='content-type'>Content-type</h3>
 <p><code>application/json</code></p>
-<h3 id='body-data'>body data</h3>
+<h3 id='response'>Response</h3>
+<blockquote>
+<p>Example Causes JSON</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"cod_ramo"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cod_causa"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txt_desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipiscing elit"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
 <th>Type</th>
-<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>cod_ramo</td>
 <td>int</td>
-<td>true</td>
 <td>Branch code</td>
 </tr>
 <tr>
-<td>cod_suc</td>
+<td>cod_causa</td>
 <td>int</td>
-<td>true</td>
-<td>Branch Office code</td>
+<td>Accident Cause code</td>
 </tr>
 <tr>
-<td>nro_pol</td>
-<td>long</td>
-<td>true</td>
-<td>Policy number</td>
+<td>txt_desc</td>
+<td>string</td>
+<td>Description</td>
+</tr>
+</tbody></table>
+<h1 id='datasets'>Datasets</h1><h2 id='document-types'>Document types</h2>
+<table><thead>
+<tr>
+<th>cod_tipo_doc</th>
+<th>Abbreviation</th>
+<th>Description</th>
+<th>Translation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>CC</td>
+<td>CEDULA DE CIUDADANIA</td>
+<td>Identity card</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CE</td>
+<td>CEDULA DE EXTRANJERIA</td>
+<td>Foreigner id</td>
+</tr>
+<tr>
+<td>3</td>
+<td>NIT</td>
+<td>NRO DE NIT</td>
+<td>VAT number</td>
+</tr>
+<tr>
+<td>4</td>
+<td>TI</td>
+<td>TARJETA DE IDENTIDAD</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>PS</td>
+<td>PASAPORTE</td>
+<td>Passport</td>
+</tr>
+<tr>
+<td>6</td>
+<td>TSS</td>
+<td>TARJETA DEL SEGURO SOCIAL EXTR</td>
+<td>Social security</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SEN</td>
+<td>SOC.EXTRANJERA SIN NIT EN COLO</td>
+<td>Foreign VAT Number</td>
+</tr>
+<tr>
+<td>8</td>
+<td>FDI</td>
+<td>FIDEICOMISO</td>
+<td>Trust fund</td>
+</tr>
+<tr>
+<td>9</td>
+<td>RC</td>
+<td>REGISTRO CIVIL</td>
+<td>Civil registration</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ASI</td>
+<td>ADULTO SIN IDENTIFICACION</td>
+<td>Adult without identification</td>
+</tr>
+<tr>
+<td>11</td>
+<td>MSI</td>
+<td>MENOR SIN IDENTIFICACION</td>
+<td>Minor without identification</td>
+</tr>
+<tr>
+<td>12</td>
+<td>TP</td>
+<td>TARJETA PROFESIONAL</td>
+<td>Professional card</td>
+</tr>
+<tr>
+<td>13</td>
+<td>PEP</td>
+<td>PEP (Venezuela)</td>
+<td>PEP (Venezuela)</td>
+</tr>
+</tbody></table>
+<h2 id='gender-types'>Gender types</h2>
+<table><thead>
+<tr>
+<th>sexo</th>
+<th>description</th>
+<th>Translation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>F</td>
+<td>FEMENINO</td>
+<td>Female</td>
+</tr>
+<tr>
+<td>M</td>
+<td>MASCULINO</td>
+<td>Male</td>
+</tr>
+</tbody></table>
+<h2 id='marital-status-code'>Marital Status Code</h2>
+<table><thead>
+<tr>
+<th>cod_est_civil</th>
+<th>Description</th>
+<th>Translation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>SOLTERO</td>
+<td>Single</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CASADO</td>
+<td>Married</td>
+</tr>
+<tr>
+<td>3</td>
+<td>VIUDO</td>
+<td>Widower</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DIVORCIADO</td>
+<td>Divorced</td>
+</tr>
+<tr>
+<td>5</td>
+<td>UNION LIBR</td>
+<td>Consensual union</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SEPARADO</td>
+<td>Separated</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DESCONOCID</td>
+<td>Unknown</td>
+</tr>
+</tbody></table>
+<h2 id='address-types'>Address Types</h2>
+<table><thead>
+<tr>
+<th>cod_tipo_dir</th>
+<th>Description</th>
+<th>Translation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>DOMICILIO</td>
+<td>Home</td>
+</tr>
+<tr>
+<td>2</td>
+<td>OFICINA/COMERCIAL</td>
+<td>OFFICE/COMMERCIAL</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PRUEBA</td>
+<td>Test</td>
+</tr>
+<tr>
+<td>6</td>
+<td>APARTADO AEREO</td>
+<td>P.O.Box</td>
+</tr>
+</tbody></table>
+<h2 id='telephone-types'>Telephone Types</h2>
+<table><thead>
+<tr>
+<th>cod_tipo_telef</th>
+<th>Description</th>
+<th>Length</th>
+<th>Translation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>PBX / CONMUTADOR</td>
+<td>7</td>
+<td>PBX/Switch</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CASA</td>
+<td>7</td>
+<td>Home</td>
+</tr>
+<tr>
+<td>3</td>
+<td>OFICINA</td>
+<td>7</td>
+<td>Office</td>
+</tr>
+<tr>
+<td>4</td>
+<td>OFICINA 2</td>
+<td>7</td>
+<td>Office 2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>OFICINA 3</td>
+<td>7</td>
+<td>Office 3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>TELEFAX</td>
+<td>7</td>
+<td>Fax</td>
+</tr>
+<tr>
+<td>7</td>
+<td>TELFAX 2</td>
+<td>7</td>
+<td>Fax 2</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CELULAR</td>
+<td>10</td>
+<td>Mobile</td>
+</tr>
+<tr>
+<td>9</td>
+<td>BEEPER</td>
+<td>7</td>
+<td>Beeper</td>
+</tr>
+<tr>
+<td>10</td>
+<td>E-MAIL</td>
+<td>99</td>
+<td>E-mail</td>
+</tr>
+<tr>
+<td>11</td>
+<td>RESIDENCIA</td>
+<td>7</td>
+<td>Home</td>
+</tr>
+<tr>
+<td>12</td>
+<td>RESIDENCIA 2</td>
+<td>7</td>
+<td>Home 2</td>
+</tr>
+<tr>
+<td>13</td>
+<td>TRANSFERENCIAS</td>
+<td>12</td>
+<td>Transfers</td>
+</tr>
+<tr>
+<td>20</td>
+<td>E-MAIL FACTURA ELECTRONICA</td>
+<td>99</td>
+<td>Electronic invoice e-mail</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
