@@ -22,6 +22,15 @@ procesadoExitoso | True if policy exists | True if operation was successful
 mensaje | Not used | Issued message or error message
 codigoSise | Not used | ID issued by SISE
 
+stateDiagram-v2
+    [*] --> Still
+    Still --> [*]
+    Still --> Moving
+    Moving --> Still
+    Moving --> Crash
+    Crash --> [*]
+            
+
 ## Get Policy Number
 
 > Request data example

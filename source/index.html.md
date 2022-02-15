@@ -15,6 +15,7 @@ includes:
   - insured
   - coverages
   - causes
+  - datasets
   - errors
 
 search: true
