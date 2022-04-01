@@ -50,8 +50,8 @@ Methods return a JSON encoded object
 Attribute | Type | Required | Description | Vlocity mapping
 --------- | ---- | -------- | ----------- | -------------
 cod_usuario | string | false | User ID assigned by Mundial | 
-cod_aseg | long | false | Insured ID in SISE | `Default: 0`
-nombre | string | false | First and middle name of the insured | 
+cod_aseg | long | false | Insured ID in SISE | When creating a new insured party must be 0. Otherwise it is returned on the [Get Insured Method](#get-insured) `Default: 0`
+nombre | string | false | First and middle name of the insured | The name in the Account related to the Insurance Policy Participants of the Insurance Policy 
 apellido1 | string | false | Last name 1 | 
 apellido2 | string | false | Last name 2 | 
 tipo_doc | int | false | Document type ID | [Document Types](#document-types)

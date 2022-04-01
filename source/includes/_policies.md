@@ -22,15 +22,6 @@ procesadoExitoso | True if policy exists | True if operation was successful
 mensaje | Not used | Issued message or error message
 codigoSise | Not used | ID issued by SISE
 
-stateDiagram-v2
-    [*] --> Still
-    Still --> [*]
-    Still --> Moving
-    Moving --> Still
-    Moving --> Crash
-    Crash --> [*]
-            
-
 ## Get Policy Number
 
 > Request data example
@@ -94,7 +85,7 @@ nro_pol | long | True | Policy number
     "imp_base_disponible": 0,
     "cod_pto_vta": 123456789,
     "cod_tipo_poliza": 25,
-    "cod_giro_negocio": 25,
+    "cod_giro_negocio": 1,
     "sn_pagador": true,
     "referencia_pago": "abcd",
     "convenio_id": "",
@@ -214,9 +205,9 @@ imp_recargo | double | false | surcharge amount | `Default value: 0`
 imp_base_disponible | double | true | base premium, value used for VAT calculation |  `Asset:vlocity_ins__StandardPremium__c`
 cod_pto_vta | long | false | Point of sale code | `Asset:vlocity_ins__StandardPremium__c`
 cod_tipo_poliza | long | true | Policy type code | Matrix in the IP 
-cod_giro_negocio | int | false | Identifies whether the policy is collective or individual | TBD 
+cod_giro_negocio | int | false | Identifies whether the policy is collective or individual | `Default value: 1`
 sn_pagador | bool | true | Policy type code | If the policyholder is the same payer, send true.
-referencia_pago | string | true | Payment reference. Must be filled if `sn_pagador` is true | TBD
+referencia_pago | string | true | Payment reference. Must be filled if `sn_pagador` is true | `Default value: NULL`
 convenio_id | int | false | SISE Agreement code | `default: ''`
 plan_id | int | false | SISE plan code | `default: ''`
 fechaDesembolso | datetime | false | Payout date | `default: ''`

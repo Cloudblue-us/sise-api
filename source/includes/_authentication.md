@@ -90,6 +90,8 @@ Once the Token has been issued, it can be renewed just sending the <code>refresh
 Attribute | Type | Description
 --------- | ---- | -----------
 grant_type | String | `password`
+UserName | String | Username issued by Mundial
+password | String | Password issued by Mundial
 refresh_token | String | Token issued 
 client_id | String | Client Id issued by SISE
 client_secret | String | Hash issued by SISE
