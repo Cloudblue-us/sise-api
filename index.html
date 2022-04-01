@@ -554,6 +554,16 @@ You must replace <code>access_token</code> with your personal API key.
 <td><code>password</code></td>
 </tr>
 <tr>
+<td>UserName</td>
+<td>String</td>
+<td>Username issued by Mundial</td>
+</tr>
+<tr>
+<td>password</td>
+<td>String</td>
+<td>Password issued by Mundial</td>
+</tr>
+<tr>
 <td>refresh_token</td>
 <td>String</td>
 <td>Token issued</td>
@@ -606,14 +616,6 @@ You must replace <code>access_token</code> with your personal API key.
 <td>ID issued by SISE</td>
 </tr>
 </tbody></table>
-
-<p>stateDiagram-v2
-    [<em>] --&gt; Still
-    Still --&gt; [</em>]
-    Still --&gt; Moving
-    Moving --&gt; Still
-    Moving --&gt; Crash
-    Crash --&gt; [*]</p>
 <h2 id='get-policy-number'>Get Policy Number</h2>
 <blockquote>
 <p>Request data example</p>
@@ -689,7 +691,7 @@ You must replace <code>access_token</code> with your personal API key.
     </span><span class="nl">"imp_base_disponible"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"cod_pto_vta"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
     </span><span class="nl">"cod_tipo_poliza"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cod_giro_negocio"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cod_giro_negocio"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"sn_pagador"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"referencia_pago"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcd"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"convenio_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -967,7 +969,7 @@ You must replace <code>access_token</code> with your personal API key.
 <td>int</td>
 <td>false</td>
 <td>Identifies whether the policy is collective or individual</td>
-<td>TBD</td>
+<td><code>Default value: 1</code></td>
 </tr>
 <tr>
 <td>sn_pagador</td>
@@ -981,7 +983,7 @@ You must replace <code>access_token</code> with your personal API key.
 <td>string</td>
 <td>true</td>
 <td>Payment reference. Must be filled if <code>sn_pagador</code> is true</td>
-<td>TBD</td>
+<td><code>Default value: NULL</code></td>
 </tr>
 <tr>
 <td>convenio_id</td>
@@ -1101,14 +1103,14 @@ You must replace <code>access_token</code> with your personal API key.
 <td>long</td>
 <td>false</td>
 <td>Insured ID in SISE</td>
-<td><code>Default: 0</code></td>
+<td>When creating a new insured party must be 0. Otherwise it is returned on the <a href="#get-insured">Get Insured Method</a> <code>Default: 0</code></td>
 </tr>
 <tr>
 <td>nombre</td>
 <td>string</td>
 <td>false</td>
 <td>First and middle name of the insured</td>
-<td></td>
+<td>The name in the Account related to the Insurance Policy Participants of the Insurance Policy</td>
 </tr>
 <tr>
 <td>apellido1</td>
